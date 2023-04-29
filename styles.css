@@ -1,0 +1,30 @@
+* {
+  font-size: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  width: 90vw;
+  display: grid;
+  grid-template-columns: repeat(15, 60px);
+  grid-template-rows: repeat(5, 60px);
+}
+
+body button:nth-child(15),
+body button:nth-child(16),
+body button:nth-child(30),
+body button:nth-child(42),
+body button:nth-child(43) {
+  grid-column: span 2;
+}
+
+body button:nth-child(54) {
+  grid-column: span 3;
+}
+
+body button:nth-child(58) {
+  grid-column: span 6;
+}
