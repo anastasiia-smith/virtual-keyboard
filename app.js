@@ -68,18 +68,6 @@ document.onclick = (event) => {
   event.preventDefault();
 };
 
-// Create event listener with highlighted button
-
-document.addEventListener('keydown', (event) => {
-  event.preventDefault();
-  const keyCode = event.code;
-  const button = document.getElementsByClassName(`${keyCode}`)[0];
-  button.classList.add('push');
-  setTimeout(() => {
-    button.classList.remove('push');
-  }, '100');
-});
-
 const body = document.getElementsByTagName('body')[0];
 
 // Create header and textfield
@@ -91,6 +79,23 @@ body.appendChild(headerTop);
 
 const textarea = document.createElement('textarea');
 body.appendChild(textarea);
+
+// Create event listener with highlighted button
+
+document.addEventListener('keydown', (event) => {
+  event.preventDefault();
+  const keyCode = event.code;
+  const button = document.getElementsByClassName(`${keyCode}`)[0];
+  button.classList.add('push');
+  setTimeout(() => {
+    button.classList.remove('push');
+  }, '100');
+  for (const child of button.children) {
+    if (child.className === 'active') {
+      textarea.value += child.innerHTML;
+    }
+  }
+});
 
 // Create wrapping div for buttons
 
