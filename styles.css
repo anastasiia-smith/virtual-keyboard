@@ -73,7 +73,9 @@ body button:hover {
   background-color: #1f1f1f;
 }
 
-body button:active {
+body button:active,
+body button.push {
   border-color: #ffffff;
   background-color: #1f1f1f;
+  color: #fff100;
 }

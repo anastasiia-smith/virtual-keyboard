@@ -64,6 +64,20 @@ const keys = [
   { code: 'ArrowRight', ru: ['right arrow', 'right arrow'], en: ['right arrow', 'right arrow'] },
 ];
 
+document.onclick = (event) => {
+  event.preventDefault();
+};
+
+document.addEventListener('keydown', (event) => {
+  event.preventDefault();
+  const keyCode = event.code;
+  const button = document.getElementsByClassName(`${keyCode}`)[0];
+  button.classList.add('push');
+  setTimeout(() => {
+    button.classList.remove('push');
+  }, '100');
+});
+
 const body = document.getElementsByTagName('body')[0];
 
 for (let symbol in keys) {
