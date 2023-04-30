@@ -100,29 +100,29 @@ body.appendChild(div);
 
 // Create buttons
 
-for (let symbol in keys) {
+for (const symbol of keys) {
   // Create button element
   const button = document.createElement('button');
-  button.className = `${keys[symbol].code}`;
+  button.className = `${symbol.code}`;
   div.appendChild(button);
   // Create lowercase en
   const buttonDownEn = document.createElement('span');
-  const buttonDownEnText = document.createTextNode(keys[symbol].en[0]);
+  const buttonDownEnText = document.createTextNode(symbol.en[0]);
   buttonDownEn.appendChild(buttonDownEnText);
   buttonDownEn.className = 'active';
   // Create lowercase ru
   const buttonDownRu = document.createElement('span');
-  const buttonDownRuText = document.createTextNode(keys[symbol].ru[0]);
+  const buttonDownRuText = document.createTextNode(symbol.ru[0]);
   buttonDownRu.appendChild(buttonDownRuText);
   buttonDownRu.className = 'hidden';
   // Create capital en
   const buttonUpEn = document.createElement('span');
-  const buttonUpEnText = document.createTextNode(keys[symbol].en[1]);
+  const buttonUpEnText = document.createTextNode(symbol.en[1]);
   buttonUpEn.appendChild(buttonUpEnText);
   buttonUpEn.className = 'hidden';
   // Create capital ru
   const buttonUpRu = document.createElement('span');
-  const buttonUpRuText = document.createTextNode(keys[symbol].ru[1]);
+  const buttonUpRuText = document.createTextNode(symbol.ru[1]);
   buttonUpRu.appendChild(buttonUpRuText);
   buttonUpRu.className = 'hidden';
   // Append buttons to second div
