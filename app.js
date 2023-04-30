@@ -133,4 +133,12 @@ for (const symbol of keys) {
   button.appendChild(buttonUpRu);
   button.appendChild(buttonDownEn);
   button.appendChild(buttonDownRu);
+  button.addEventListener('click', (event) => {
+    const clickedButton = event.target;
+    for (const child of clickedButton.children) {
+      if (child.className === 'active') {
+        textarea.value += child.innerHTML;
+      }
+    }
+  });
 }
