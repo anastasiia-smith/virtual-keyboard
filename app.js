@@ -74,16 +74,49 @@ headerTop.appendChild(headerTopText);
 body.appendChild(headerTop);
 
 const textarea = document.createElement('textarea');
+textarea.rows = 10;
 body.appendChild(textarea);
+
+// function to check the button before adding to the textarea
+function checkAndAddButton(clickedButton) {
+  if (clickedButton.classList[0].search('Key') !== -1
+      || clickedButton.classList[0].search('Digit') !== -1
+      || clickedButton.classList[0] === 'Backslash'
+      || clickedButton.classList[0] === 'Backquote'
+      || clickedButton.classList[0] === 'Minus'
+      || clickedButton.classList[0] === 'Equal'
+      || clickedButton.classList[0].search('Bracket') !== -1
+      || clickedButton.classList[0] === 'Semicolon'
+      || clickedButton.classList[0] === 'Quote'
+      || clickedButton.classList[0] === 'Comma'
+      || clickedButton.classList[0] === 'Perio'
+      || clickedButton.classList[0] === 'Slash'
+      || clickedButton.classList[0] === 'Space') {
+    textarea.value += clickedButton.innerHTML;
+  } else if (clickedButton.classList[0] === 'Backspace') {
+    const textareaValue = textarea.value;
+    textarea.value = textareaValue.slice(0, -1);
+  } else if (clickedButton.classList[0] === 'Tab') {
+    const textareaValue = textarea.value;
+    textarea.value = `\t${textareaValue}`; // TO DO horizontal indent when on nl
+  } else if (clickedButton.classList[0] === 'CapsLock') {
+    // TO DO find all letters and make them all capital
+  } else if (clickedButton.classList[0] === 'Enter') {
+    textarea.value += '\n';
+  } else if (clickedButton.classList[0] === 'ShiftLeft'
+            || clickedButton.classList[0] === 'ShiftRight') {
+    // TO DO find all symbols and change inner html to upperEn
+  }
+}
 
 // Create event listener with highlighted button
 
 document.addEventListener('keydown', (event) => {
   event.preventDefault();
   const keyCode = event.code;
-  const button = document.getElementsByClassName(`${keyCode}`)[0];
-  button.classList.add('push');
-  textarea.value += button.innerHTML;
+  const clickedButton = document.getElementsByClassName(`${keyCode}`)[0];
+  clickedButton.classList.add('push');
+  checkAndAddButton(clickedButton);
 });
 
 document.addEventListener('keyup', (event) => {
@@ -110,7 +143,6 @@ keys.forEach((symbol) => {
   button.dataset.upperRu = `${symbol.ru[1]}`;
   button.innerHTML = button.dataset.lowerEn;
   button.addEventListener('click', (event) => {
-    const clickedButton = event.target;
-    textarea.value += clickedButton.innerHTML;
+    checkAndAddButton(event.target);
   });
 });
