@@ -83,11 +83,7 @@ document.addEventListener('keydown', (event) => {
   const keyCode = event.code;
   const button = document.getElementsByClassName(`${keyCode}`)[0];
   button.classList.add('push');
-  for (const child of button.children) {
-    if (child.className === 'active') {
-      textarea.value += child.innerHTML;
-    }
-  }
+  textarea.value += button.innerHTML;
 });
 
 document.addEventListener('keyup', (event) => {
@@ -108,37 +104,13 @@ for (const symbol of keys) {
   const button = document.createElement('button');
   button.className = `${symbol.code}`;
   div.appendChild(button);
-  // Create lowercase en
-  const buttonDownEn = document.createElement('span');
-  const buttonDownEnText = document.createTextNode(symbol.en[0]);
-  buttonDownEn.appendChild(buttonDownEnText);
-  buttonDownEn.className = 'active';
-  // Create lowercase ru
-  const buttonDownRu = document.createElement('span');
-  const buttonDownRuText = document.createTextNode(symbol.ru[0]);
-  buttonDownRu.appendChild(buttonDownRuText);
-  buttonDownRu.className = 'hidden';
-  // Create capital en
-  const buttonUpEn = document.createElement('span');
-  const buttonUpEnText = document.createTextNode(symbol.en[1]);
-  buttonUpEn.appendChild(buttonUpEnText);
-  buttonUpEn.className = 'hidden';
-  // Create capital ru
-  const buttonUpRu = document.createElement('span');
-  const buttonUpRuText = document.createTextNode(symbol.ru[1]);
-  buttonUpRu.appendChild(buttonUpRuText);
-  buttonUpRu.className = 'hidden';
-  // Append buttons to second div
-  button.appendChild(buttonUpEn);
-  button.appendChild(buttonUpRu);
-  button.appendChild(buttonDownEn);
-  button.appendChild(buttonDownRu);
+  button.dataset.lowerEn = `${symbol.en[0]}`;
+  button.dataset.upperEn = `${symbol.en[1]}`;
+  button.dataset.lowerRu = `${symbol.ru[0]}`;
+  button.dataset.upperRu = `${symbol.ru[1]}`;
+  button.innerHTML = button.dataset.lowerEn;
   button.addEventListener('click', (event) => {
     const clickedButton = event.target;
-    for (const child of clickedButton.children) {
-      if (child.className === 'active') {
-        textarea.value += child.innerHTML;
-      }
-    }
+    textarea.value += clickedButton.innerHTML;
   });
 }
