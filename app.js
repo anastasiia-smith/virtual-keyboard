@@ -64,10 +64,6 @@ const keys = [
   { code: 'ArrowRight', ru: ['right arrow', 'right arrow'], en: ['right arrow', 'right arrow'] },
 ];
 
-document.onclick = (event) => {
-  event.preventDefault();
-};
-
 const body = document.getElementsByTagName('body')[0];
 
 // Create header and textfield
