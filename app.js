@@ -68,6 +68,8 @@ document.onclick = (event) => {
   event.preventDefault();
 };
 
+// Create event listener with highlighted button
+
 document.addEventListener('keydown', (event) => {
   event.preventDefault();
   const keyCode = event.code;
@@ -80,11 +82,28 @@ document.addEventListener('keydown', (event) => {
 
 const body = document.getElementsByTagName('body')[0];
 
+// Create header and textfield
+
+const headerTop = document.createElement('h1');
+const headerTopText = document.createTextNode('Keyboard (made on MAC)');
+headerTop.appendChild(headerTopText);
+body.appendChild(headerTop);
+
+const textarea = document.createElement('textarea');
+body.appendChild(textarea);
+
+// Create wrapping div for buttons
+
+const div = document.createElement('div');
+body.appendChild(div);
+
+// Create buttons
+
 for (let symbol in keys) {
   // Create button element
   const button = document.createElement('button');
   button.className = `${keys[symbol].code}`;
-  body.appendChild(button);
+  div.appendChild(button);
   // Create lowercase en
   const buttonDownEn = document.createElement('span');
   const buttonDownEnText = document.createTextNode(keys[symbol].en[0]);
