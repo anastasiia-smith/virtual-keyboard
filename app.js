@@ -99,7 +99,7 @@ body.appendChild(div);
 
 // Create buttons
 
-for (const symbol of keys) {
+keys.forEach((symbol) => {
   // Create button element
   const button = document.createElement('button');
   button.className = `${symbol.code}`;
@@ -113,4 +113,4 @@ for (const symbol of keys) {
     const clickedButton = event.target;
     textarea.value += clickedButton.innerHTML;
   });
-}
+});
