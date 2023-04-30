@@ -83,14 +83,17 @@ document.addEventListener('keydown', (event) => {
   const keyCode = event.code;
   const button = document.getElementsByClassName(`${keyCode}`)[0];
   button.classList.add('push');
-  setTimeout(() => {
-    button.classList.remove('push');
-  }, '100');
   for (const child of button.children) {
     if (child.className === 'active') {
       textarea.value += child.innerHTML;
     }
   }
+});
+
+document.addEventListener('keyup', (event) => {
+  const keyCode = event.code;
+  const button = document.getElementsByClassName(`${keyCode}`)[0];
+  button.classList.remove('push');
 });
 
 // Create wrapping div for buttons
