@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  width: 90vw;
+  min-width: 900px;
+  max-width: 1200px;
+  margin: 70px auto;
+  font-family: Verdana, sans-serif;
+}
+
+h1 {
+  color: #feb200;
+}
+
+textarea {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(5, 60px);
+  grid-gap: 4px;
+  position: relative;
+}
+
+div button {
+  font-size: 10px;
+}
+
+div button:nth-child(14),
+div button:nth-child(15),
+div button:nth-child(29),
+div button:nth-child(41),
+div button:nth-child(53) {
+  grid-column: span 2;
+}
+
+div button:nth-child(42) {
+  grid-column: span 3;
+}
+
+div button:nth-child(57) {
+  grid-column: span 7;
+}
+
+div button:nth-child(60),
+div button:nth-child(61),
+div button:nth-child(62),
+div button:nth-child(63) {
+  position: absolute;
+  width: 100%;
+  height: 49%;
+  grid-row: 5 / 5;
+}
+
+div button:nth-child(60) {
+  grid-column: 13 / 13; 
+}
+
+div button:nth-child(61),
+div button:nth-child(62) {
+  grid-column: 14 / 14; 
+}
+
+div button:nth-child(60),
+div button:nth-child(62),
+div button:nth-child(63) {
+  bottom: 0;
+}
+
+div button:nth-child(63) {
+  grid-column: 15 / 15; 
+}
+
+div button {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+div button:hover {
+  background-color: #1f1f1f;
+}
+
+div button:active,
+div button.push {
+  border-color: #ffffff;
+  background-color: #1f1f1f;
+  color: #fff100;
+}
